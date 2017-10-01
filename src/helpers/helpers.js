@@ -51,11 +51,11 @@ const testBottomRightToTopLeft = (x, y, w, h) => {
 const animate = (overlay, direction, top, left) => {
     // Set the transition to the overlay
   if (direction === 'in') {
-        // First bring the overlay to the  position
+    // First bring the overlay to the  position
     overlay.style.top = top + 'px'
     overlay.style.left = left + 'px'
 
-        // Animate the Overlay to {0, 0} positoin
+    // Animate the Overlay to {0, 0} positoin
     animateHelper(function (t) {
       var currTop = parseFloat(overlay.style.top.replace(/(px|%)$/, ''))
       var currLeft = parseFloat(overlay.style.left.replace(/(px|%)$/, ''))
@@ -64,15 +64,18 @@ const animate = (overlay, direction, top, left) => {
       overlay.style.left = (currLeft - (currLeft * t)) + 'px'
     })
   } else if (direction === 'out') {
-        // Bring the overlay to {0, 0} position
+    // Bring the overlay to {0, 0} position
     overlay.style.top = 0
     overlay.style.left = 0
 
-        // Animate the Overlay to {top, left} positoin
+    // Animate the Overlay to {top, left} positoin
     animateHelper(function (t) {
       overlay.style.top = (top * t) + 'px'
       overlay.style.left = (left * t) + 'px'
     })
+    // Round Fix
+    currLeft = parseFloat(overlay.style.left.replace(/(px|%)$/, '');
+    overlay.style.left = (currLeft > 0) ? currLeft + 1 + 'px' : currLeft - 1 + 'px'
   }
 }
 

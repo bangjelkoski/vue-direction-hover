@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo - Vue Direction Hover</title>
+	<link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel=stylesheet href="dist/vue-direction-hover.css">
+	<script src="https://unpkg.com/vue"></script>
+	<script src="dist/vue-direction-hover.browser.js"></script>
+	<style>
+		.first-item{
+			width: 15% !important;
+		    height: 80px;
+		    background-color: #ecf0f1;
+		    color: rgba(52,73,94,.6);
+		    -webkit-box-shadow: inset 0 2px 20px #e6ebed;
+		    box-shadow: inset 0 2px 20px #e6ebed;
+		    text-align: center;
+		    font-size: 50px;
+		    display: inline-block;
+		    vertical-align: top;
+		    text-decoration: none;
+		    margin-right: 10px;
+		    margin-bottom: 20px;
+		}
+		.dh__overlay{
+			background: rgba(44,62,80,.9) !important;
+		}
+		.dh__item .dh__overlay{
+			font-size: 10px;
+		}
+		#second-container{
+			margin-top: 40px;
+		}
+		.last{
+			margin-right: 0;
+		}
+		.extra-class{
+			margin-right: 20px;
+			margin-bottom: 20px;
+			width: 200px !important;
+			height: 120px !important;
+		}
+		.extra-class img{
+			height: 120px !important; 
+			width: 200px !important; 
+		}
+	</style>
+</head>
+<body>
+  <div id="app" style="padding-top: 6em;">
+  	<h1 style="text-align: center; padding-bottom: 2em;">Vue.js Direction Hover Effect - Component</h1>
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-sm-12">
+  				<vue-dh :container="'.container'">
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'" style="clear: both;">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item'">
+					</vue-dh-item>
+					<vue-dh-item :link="'#'" :item-class="'first-item last'">
+					</vue-dh-item>
+				</vue-dh>
+  			</div>
+  			<div class="col-sm-12">
+  				<pre class="code-snippet">
+&lt;vue-dh&gt;
+  &lt;vue-dh-item&gt;&lt;/vue-dh-item&gt;
+  &lt;vue-dh-item&gt;&lt;/vue-dh-item&gt;
+  &lt;vue-dh-item&gt;&lt;/vue-dh-item&gt;
+  .
+  .
+&lt;/vue-dh&gt;
+  				</pre>
+  			</div>
+  		</div>
+  	</div>
+  	<div id="second-container" class="container">
+  		<div class="row">
+  			<div class="col-sm-12">
+  				<vue-dh :container="'#second-container'" :transition="'easeInElastic'" :speed="1000">
+					<vue-dh-item :link="'https://github.com'" :image="'https://assets-cdn.github.com/images/modules/open_graph/github-mark.png'" :item-class="'extra-class'">
+						<div slot="overlay">
+					      <h1> Github </h1>
+					    </div>
+					</vue-dh-item>
+					<vue-dh-item :link="'http://vuejs.org'" :image="'https://vuejs.org/images/logo.png'" :item-class="'extra-class'">
+						<div slot="overlay">
+					      <h1> Vue.js </h1>
+					    </div>
+					</vue-dh-item>
+					<vue-dh-item :link="'http://google.com'" :image="'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'" :item-class="'extra-class'">
+						<div slot="overlay">
+					      <h1> Google </h1>
+					    </div>
+					</vue-dh-item>
+				</vue-dh>
+  			</div>
+  			<div class="col-sm-12">
+  				<pre class="code-snippet">
+&lt;vue-dh :container="'#second-container'" :transition="'easeInElastic'" :speed="1000"&gt;
+
+  &lt;vue-dh-item :link="'https://github.com'" :image="'https://assets-cdn.github.com/images/modules/open_graph/github-mark.png'" :item-class="'extra-class'"&gt;
+    &lt;div slot="overlay"&gt;
+      &lt;h1&gt; Github &lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/vue-dh-item&gt;
+
+  &lt;vue-dh-item :link="'http://vuejs.org'" :image="'https://vuejs.org/images/logo.png'" :item-class="'extra-class'"&gt;
+    &lt;div slot="overlay"&gt;
+      &lt;h1&gt; Vue.js &lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/vue-dh-item&gt;
+
+  &lt;vue-dh-item :link="'http://google.com'" :image="'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'" :item-class="'extra-class'"&gt;
+    &lt;div slot="overlay"&gt;
+      &lt;h1&gt; Google &lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/vue-dh-item&gt;
+  .
+  .
+  .
+&lt;/vue-dh&gt;
+  				</pre>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+    })
+  </script>
+
+</body>
+</html>

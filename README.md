@@ -42,7 +42,7 @@ There are few props you can add to your `<vue-dh-item></vue-dh-item>` tag:
 | link        | String        | '#'      | Link of the item.            |
 | image       | String        | ''       | Image of the item            |
 | target      | Boolean       | true     | true: _blank, false: _self   |
-| itemClass   | String        | ''       | Additional class of the item |
+| item-class  | String       | ''      | Additional class of the item |
 
 You can also custom `overlay` slot in `vue-dh-item`:
 ```HTML
@@ -51,19 +51,17 @@ You can also custom `overlay` slot in `vue-dh-item`:
 </vue-dh-item>
 ```
 
-Also, you can add custom options for the `<vue-dh></vue-dh>` tag, by the settings property which is an object containing:
-```javascript
-settings: {
-	container: 'body',	// The reference container of the items, usualy its body
-	transition: 'linear', // The default transition
-	speed: '300',	// Speed of the transition
-}
+Also, you can add custom options for the `<vue-dh></vue-dh>` tag as well:
 
-/* And you can add it like this */
-<vue-dh :settings="{container: 'body', transition: 'linear', speed: '300'}">
+| Name             | Type          | Default        | Description                   |
+| ---              | ---           | ---            | ---                           |
+| container        | String        | 'body'         | Container holding the items.  |
+| transition       | String        | 'linear'       | Transition type               |
+| speed            | Number        | 300            | Speed of the transition       |
 
-/* Or you can define the settings in your Vue Component's data, and include the object */
-```
+And you can add it like this:
+`<vue-dh :container="'body'" :transition="'linear'" :speed="300">`
+
 Read why you might need container sometimes [HERE](#container).<br/>
 Find all available transitions [HERE](#transitions).
 
@@ -80,7 +78,7 @@ Here is an example use with minimal options
 Here is an example use with all the options
 ```html
 <vue-dh :settings="{container: '#content', speed: 500, transition: 'easeInElastic'}">
-  <vue-dh-item v-for="item in items" :key="'item-' + id" :link="item.link" :image="item.image" :class="'additionalClass'">
+  <vue-dh-item v-for="item in items" :key="'item-' + id" :link="item.link" :image="item.image" :item-class="'additionalClass'">
   	<div slot="overlay">
   		<h1>{{ item.title }}</h1>
   		<p>{{ item.description }} </p>

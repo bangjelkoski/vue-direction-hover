@@ -31,12 +31,18 @@ export default {
         type: String,
         default: '#',
     },
-    image: String,
+    image: {
+        type: String,
+        default: '/',
+    },
     target: {
         type: Boolean,
         default: true
     },
-    itemClass: String,
+    itemClass: {
+      type: String,
+      default: '', 
+    },
   },
   methods: {
     getOptions(parent){

@@ -11,15 +11,30 @@ export default {
   data () {
    return {
   	   options: {
-  	   	   container: 'body', 
-  	   	   transition: 'linear', 
-  	   	   speed: '300', 
+  	   	   container: '', 
+  	   	   transition: '', 
+  	   	   speed: '', 
 	   },
 	}
   },
-  props: ['settings'],
+  props: {
+      container: {
+          default: 'body', 
+          type: String,
+      },
+      transition: {
+          default: 'linear',
+          type: String,
+      },
+      speed: {
+          default: 300,
+          type: Number
+      }
+  },
   created () {
-  	this.options = this.settings;
+    this.options.container = this.container;
+    this.options.transition = this.transition;
+  	this.options.speed = this.speed;
   }
 }
 </script>

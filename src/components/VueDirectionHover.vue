@@ -1,6 +1,6 @@
 <template>
     <div id="dh__container">
-        <slot></slot>
+    	<slot></slot>
     </div>
 </template>
 
@@ -8,6 +8,19 @@
 export default {
   name: 'VueDirectionHover',
 
+  data () {
+   return {
+  	   options: {
+  	   	   container: 'body', 
+  	   	   transition: 'linear', 
+  	   	   speed: '300', 
+	   },
+	}
+  },
+  props: ['settings'],
+  created () {
+  	this.options = this.settings;
+  }
 }
 </script>
 

@@ -1,6 +1,6 @@
 # Vue Component - Direction Hover Effect
 
-Vue.js Component for the Direction Hover Effect.  <br/>
+Vue.js Component for the Direction Hover Effect. You can see a demo here: <a href="https://github.com/" target="_blank">DEMO</a> <br/>
 I'd like to thank: <a href="https://github.com/codrops/DirectionAwareHoverEffect" target="_blank">DirectionAwareHoverEffect</a> for the inspiration in making this component.
 
 ## Table of contents
@@ -8,11 +8,12 @@ I'd like to thank: <a href="https://github.com/codrops/DirectionAwareHoverEffect
 - [Installation](#installation)
 - [Usage](#usage)
 - [Example](#example)
+- [License](#license)
 
 # Installation
 
 ```
-npm install --save vue-direction-hover
+npm install vue-direction-hover --save-dev
 ```
 
 Import the main component:
@@ -25,14 +26,83 @@ Vue.use(VueDirectionHover)
 ```
 
 # Usage
+In order to use this component, you need to include the tags in your project. For example: 
+```HTML
+<vue-dh>
+  <vue-dh-item></vue-dh-item>
+  <vue-dh-item></vue-dh-item>
+  <vue-dh-item></vue-dh-item>
+</vue-dh>
+```
+The above example wont show anything since you havent added any content into the items. <br/>
+There are few props you can add to your `<vue-dh-item></vue-dh-item>` tag:
 
-> TODO
+| Name        | Type          | Default  | Description                  |
+| ---         | ---           | ---      | ---                          |
+| link        | String        | '#'      | Link of the item.            |
+| image       | String        | ''       | Image of the item            |
+| target      | Boolean       | true     | true: _blank, false: _self   |
+| itemClass   | String        | ''       | Additional class of the item |
+
+You can also custom `overlay` slot in `vue-dh-item`:
+```HTML
+<vue-dh-item>
+  <div slot="overlay">Any HTML you want.</div>
+</vue-dh-item>
+```
+
+Also, you can add custom options for the `<vue-dh></vue-dh>` tag, by the settings property which is an object containing:
+```javascript
+settings: {
+	container: 'body',	// The reference container of the items, usualy its body
+	transition: 'linear', // The default transition
+	speed: '300',	// Speed of the transition
+}
+
+/* And you can add it like this */
+<vue-dh :settings="{container: 'body', transition: 'linear', speed: '300'}">
+
+/* Or you can define the settings in your Vue Component's data, and include the object */
+```
+Read why you might need container sometimes [HERE](#container).<br/>
+Find all available transitions [HERE](#transitions).
 
 # Example
+Here is an example use with minimal options
+```html
+<vue-dh>
+  <vue-dh-item v-for="item in items" :key="'item-' + id" :link="item.link" :image="item.image">
+  	<div slot="overlay"> {{ item.title }} </div>
+  </vue-dh-item>
+</vue-dh>
+```
 
-> TODO
+Here is an example use with all the options
+```html
+<vue-dh :settings="{container: '#content', speed: 500, transition: 'easeInElastic'}">
+  <vue-dh-item v-for="item in items" :key="'item-' + id" :link="item.link" :image="item.image" :class="'additionalClass'">
+  	<div slot="overlay">
+  		<h1>{{ item.title }}</h1>
+  		<p>{{ item.description }} </p>
+  	</div>
+  </vue-dh-item>
+</vue-dh>
+```
 
----
+# Container
+So the question is when to modify the container property? Lets say that you have a page that has sidebar (30% of the page), and main content (70%) of the content. Then, in order for this plugin to work, you must change the container to `.main-content`, because if you havent do that, than the position of the in/out animations will be relative to the body of the page, and not to the content. <br/>
+Tldr; use this when you are not rendering the items in a container that is not 100% width (container.width = body.width);
+
+# Transitions
+List of all available transitions: 
+```
+linear
+easeInQuad | easeOutQuad | easeInOutQuad 
+easeInCubic | easeOutCubic | easeInOutCubic 
+easeInQuart | easeOutQuart | easeInOutQuart
+easeInQuint | easeOutQuint | easeInOutQuint 
+easeInElastic | easeOutElastic | easeInOutElastic
+```
 
 ## License
 

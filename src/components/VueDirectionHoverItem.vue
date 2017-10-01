@@ -1,6 +1,11 @@
 <template>
-      <div class="dh__item">
-          <div class="dh__overlay">Image Caption Here</div>
+      <div :class="['dh__item', itemClass]">
+        <a :href="link" :target="target ? '_blank' : '_self'">
+            <img :src="image" class="dh__image"/>
+            <div class="dh__overlay">
+                  <slot name="overlay"></slot>
+            </div>
+        </a>
       </div>    
 </template>
 
@@ -12,27 +17,40 @@ export default {
 
   data () {
     return {
-
       options: {
-        item: '.dh__item', // The Item Element
-        container: '#content', // The Container of the items (should be the most root element that contains the items)
-        overlay: '.dh__overlay', // The Overlay Element inside the item
-        transition: 'easeInOutCubic',    // Transition Type
-        speed: 300,  // Transition Speed
+        item: '.dh__item',
+        container: '',
+        overlay: '.dh__overlay',
+        transition: '',
+        speed: '',
       },
-
+    }
+  },
+  props: {
+    link: {
+        type: String,
+        default: '#',
+    },
+    image: String,
+    target: {
+        type: Boolean,
+        default: true
+    },
+    itemClass: String,
+  },
+  methods: {
+    getOptions(parent){
+        this.options.transition = parent.options.transition;
+        this.options.speed = parent.options.speed;
+        this.options.container = parent.options.container;
     }
   },
   mounted () {
+    this.getOptions(this.$parent);
     var item = this.$el
     var child = item.querySelector(this.options.overlay)
 
-    // Set Initial CSS Attributes to the Item
-    item.style.position = 'relative'
-    item.style.overflow = 'hidden'
-
     // Set Initial CSS Attributes to the overlay
-    child.style.position = 'absolute'
     child.style.top = '-' + item.offsetHeight + 'px'
     child.style.left = '-' + item.offsetWidth + 'px'
 
@@ -72,21 +90,25 @@ export default {
 
 <style scoped>
   .dh__item{
-    margin: 15px;
-    width: 22.5%;
+    position: relative;
+    overflow: hidden;
+    width: 33%;
     box-sizing: border-box;
-    height: 300px;
-    background: black;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     float: left;
-    background-image: url(https://unsplash.it/400/300?image=180);
+  }
+  .dh__item img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
   }
   .dh__overlay{
-    background: rgba(52,73,94,.9);
     width: 100%;
     height: 100%;
-    text-align: center;
-    line-height: 300px;
-    color: #fff;
     position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
   }
 </style>

@@ -9,6 +9,7 @@ I'd like to thank: <a href="https://github.com/codrops/DirectionAwareHoverEffect
 - [Usage](#usage)
 - [Example](#example)
 - [License](#license)
+- [TODO](#todo)
 
 # Installation
 
@@ -101,6 +102,9 @@ easeInQuart | easeOutQuart | easeInOutQuart
 easeInQuint | easeOutQuint | easeInOutQuint 
 easeInElastic | easeOutElastic | easeInOutElastic
 ```
+
+# TODO
+Maybe add more settings?
 
 ## License
 

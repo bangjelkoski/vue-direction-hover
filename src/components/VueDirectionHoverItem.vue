@@ -57,8 +57,8 @@ export default {
     var child = item.querySelector(this.options.overlay)
 
     // Set Initial CSS Attributes to the overlay
-    child.style.top = '-' + item.offsetHeight + 'px'
-    child.style.left = '-' + item.offsetWidth + 'px'
+    child.style.top = '-' + (item.offsetHeight - 1) + 'px'
+    child.style.left = '-' + (item.offsetWidth - 1) + 'px'
 
     var self = this
     // Add the Events

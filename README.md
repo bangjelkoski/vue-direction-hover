@@ -78,7 +78,7 @@ Here is an example use with minimal options
 
 Here is an example use with all the options
 ```html
-<vue-dh :settings="{container: '#content', speed: 500, transition: 'easeInElastic'}">
+<vue-dh :container="'#content'" :transition="'easeInElastic'" :speed="500">
   <vue-dh-item v-for="item in items" :key="'item-' + id" :link="item.link" :image="item.image" :item-class="'additionalClass'">
   	<div slot="overlay">
   		<h1>{{ item.title }}</h1>

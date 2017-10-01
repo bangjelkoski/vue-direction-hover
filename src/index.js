@@ -1,8 +1,10 @@
 import VueDirectionHover from './components/VueDirectionHover.vue'
+import VueDirectionHoverItem from './components/VueDirectionHoverItem.vue'
 
 // Install the components
 export function install (Vue) {
-  Vue.component('vue-direction-hover', VueDirectionHover)
+  Vue.component('vue-dh', VueDirectionHover)
+  Vue.component('vue-dh-item', VueDirectionHoverItem)
 }
 
 export {

@@ -1,6 +1,6 @@
-# vue-direction-hover
+# Vue Component - Direction Hover Effect
 
-Vue.js Component for the Direction Hover Effect. 
+Vue.js Component for the Direction Hover Effect.  <br/>
 I'd like to thank: <a href="https://github.com/codrops/DirectionAwareHoverEffect" target="_blank">DirectionAwareHoverEffect</a> for the inspiration in making this component.
 
 ## Table of contents

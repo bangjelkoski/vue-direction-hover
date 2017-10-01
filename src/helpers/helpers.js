@@ -73,8 +73,9 @@ const animate = (overlay, direction, top, left) => {
       overlay.style.top = (top * t) + 'px'
       overlay.style.left = (left * t) + 'px'
     })
+
     // Round Fix
-    currLeft = parseFloat(overlay.style.left.replace(/(px|%)$/, '');
+    var currLeft = parseFloat(overlay.style.left.replace(/(px|%)$/, ''));
     overlay.style.left = (currLeft > 0) ? currLeft + 1 + 'px' : currLeft - 1 + 'px'
   }
 }
